@@ -1,0 +1,73 @@
+# include "TXLib.h"
+
+void Man (int x, int y, int size, int widthLine, int rHand, int CHat1, int CHat2, int CHat3, int Mouth);
+
+int main ()
+{
+    txCreateWindow (1600, 900);
+
+    txSetFillColor (TX_WHITE);
+    txRectangle(0, 0, 1600, 900);
+
+    Man (415, 120, 1, 2,   0, 253,  72,  57, 0);
+    Man (200, 200, 2, 3, -90, 134, 107, 203, 7);
+    Man (600, 200, 2, 3,  47, 166, 172, 138, 3);
+
+    return 0;
+}
+//------------------------------------------------------
+//{------------------------------------------------------
+//!Рисует человечка
+//!
+//!@param x            x, y      -- координаты начальной точки
+//!@param size         size      -- размер мальчика (для масштабирования)
+//!@param widthLine    widthLine -- толщина линии
+//!@param rHand        rHand     -- расстояние между руками
+//!@param CHat1        CHat1     -- цвет шляпы
+//!@param CHat2        CHat2     -- цвет шляпы
+//!@param CHat3        CHat3     -- цвет шляпы
+//!@param Mouth        Mouth     -- улыбка
+//!
+//!@par   Пример использования:
+//!@code
+//!       ClearScreen(TX_BLACK);
+//!@endcode
+//}------------------------------------------------------
+
+void Man (int x, int y, int size, int widthLine, int rHand, int CHat1, int CHat2, int CHat3, int Mouth)
+    {
+    //----- туловище
+    txSetColor (RGB(123, 232, 226), widthLine);
+    txRectangle (x - 25*size, y, x + 25*size, y + 60*size);
+    //--- голова
+    txSetFillColor (RGB(255, 231, 213));
+    txCircle (x, y - 15*size, 15*size);
+    //--- глаза
+    txSetPixel (x - 5*size, y - 20*size, RGB (255, 128, 0));
+    txSetPixel (x + 5*size, y - 20*size, RGB (255, 128, 0));
+    //--- рот
+    POINT mouth [4]{{x - 5*size, y - 10 - Mouth*size},
+                    {x - 2*size, y - 10*size},
+                    {x + 2*size, y - 10*size},
+                    {x + 5*size, y - 10 - Mouth*size}};
+    txPolygon(mouth, 4);
+    //--- рука левая
+    POINT handleft [3] {{x - 25*size,             y + 30*size},
+                        {x - 45*size,             y + 30*size},
+                        {x - 45 + (rHand/2)*size, y + 10*size}};
+    txPolygon(handleft, 3);
+    //--- рука правая
+    POINT handright [3] {{x + 25*size,             y + 30*size},
+                         {x + 45*size,             y + 30*size},
+                         {x + 45 - (rHand/2)*size, y + 10*size}};
+    txPolygon(handright, 3);
+    //--- ноги
+    txSetFillColor (RGB(155, 244, 142));
+    txRectangle (x - 25*size, y + 60*size, x -  5*size, y + 120*size);
+    txRectangle (x +  5*size, y + 60*size, x + 25*size, y + 120*size);
+    //--- шляпа
+    txSetFillColor (RGB(CHat1, CHat2, CHat3));
+    POINT hat [4] {{x,           y - 50*size}, {x + 15*size, y - 30*size},
+                   {x - 15*size, y - 30*size}, {x,           y - 50*size}};
+    txPolygon(hat, 4);
+    }
