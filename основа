@@ -4,18 +4,17 @@ void Man (int x, int y, int size, int widthLine, int rHand, int CHat1, int CHat2
 
 int main ()
 {
-    txCreateWindow (1600, 900);
+txCreateWindow (1600, 900);
+txSetFillColor (TX_WHITE);
+txRectangle(0, 0, 1600, 900);
 
-    txSetFillColor (TX_WHITE);
-    txRectangle(0, 0, 1600, 900);
+Man (415, 120, 1, 2,   0, 253,  72,  57, 0);
+Man (200, 200, 2, 3, -90, 134, 107, 203, 7);
+Man (600, 200, 2, 3,  47, 166, 172, 138, 3);
 
-    Man (415, 120, 1, 2,   0, 253,  72,  57, 0);
-    Man (200, 200, 2, 3, -90, 134, 107, 203, 7);
-    Man (600, 200, 2, 3,  47, 166, 172, 138, 3);
-
-    return 0;
+return 0;
 }
-//----------------------------------------------------
+
 //{---------------------------------------------------
 //!Рисует человечка
 //!
@@ -34,18 +33,19 @@ int main ()
 //!@endcode
 //}----------------------------------------------------
 
+
 void Man (int x, int y, int size, int widthLine, int rHand, int CHat1, int CHat2, int CHat3, int Mouth)
     {
-    //----- туловище
+    //-----туловище
     txSetColor (RGB(123, 232, 226), widthLine);
     txRectangle (x - 25*size, y, x + 25*size, y + 60*size);
-    //--- голова
+    //---голова
     txSetFillColor (RGB(255, 231, 213));
     txCircle (x, y - 15*size, 15*size);
-    //--- глаза
+    //---глаза
     txSetPixel (x - 5*size, y - 20*size, RGB (255, 128, 0));
     txSetPixel (x + 5*size, y - 20*size, RGB (255, 128, 0));
-    //--- рот
+    //---рот
     POINT mouth [4]{{x - 5*size, y - 10 - Mouth*size},
                     {x - 2*size, y - 10*size},
                     {x + 2*size, y - 10*size},
