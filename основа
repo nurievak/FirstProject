@@ -3,44 +3,58 @@
 void Man (int x, int y, int size, int widthLine, int rHand, int CHat1, int CHat2, int CHat3, int Mouth);
 
 int main ()
-{
-txCreateWindow (1600, 900);
-txSetFillColor (TX_WHITE);
-txRectangle(0, 0, 1600, 900);
-
-Man (415, 120, 1, 2,   0, 253,  72,  57, 0);
-Man (200, 200, 2, 3, -90, 134, 107, 203, 7);
-Man (600, 200, 2, 3,  47, 166, 172, 138, 3);
-
-return 0;
-}
-
-//{---------------------------------------------------
+    {
+    txCreateWindow (1600, 900);
+    txSetFillColor (TX_WHITE);
+    txRectangle(0, 0, 1600, 900);
+    /*
+    Man (415, 120, 1, 2,   0, 253,  72,  57, 0);
+    Man (200, 200, 2, 3, -90, 134, 107, 203, 7);
+    Man (600, 200, 2, 3,  47, 166, 172, 138, 3);
+    */
+    int x = 300;
+    for(int z = 0; z<=20; z++)
+        {
+        Man (x, 500, 2, 3,  47, 166, 172, 138, 3);
+        x = x + 10*z;
+        txSleep(260);
+        txSetFillColor (TX_WHITE);
+        txClear();
+        }
+    return 0;
+    }
+//------------------------------------------------------
+//{------------------------------------------------------
 //!Рисует человечка
 //!
-//!x, y      -- координаты начальной точки
-//!size      -- размер мальчика (для масштабирования)
-//!widthLine -- толщина линии
-//!rHand     -- расстояние между руками
-//!CHat1     -- цвет шляпы
-//!CHat2     -- цвет шляпы
-//!CHat3     -- цвет шляпы
-//!Mouth     -- улыбка
-//}----------------------------------------------------
-
+//!@param x            x, y      -- координаты начальной точки
+//!@param size         size      -- размер мальчика (для масштабирования)
+//!@param widthLine    widthLine -- толщина линии
+//!@param rHand        rHand     -- расстояние между руками
+//!@param CHat1        CHat1     -- цвет шляпы
+//!@param CHat2        CHat2     -- цвет шляпы
+//!@param CHat3        CHat3     -- цвет шляпы
+//!@param Mouth        Mouth     -- улыбка
+//!
+//!@par   Пример использования:
+//!@code
+//!       ClearScreen(TX_BLACK);
+//!@endcode
+//}------------------------------------------------------
 
 void Man (int x, int y, int size, int widthLine, int rHand, int CHat1, int CHat2, int CHat3, int Mouth)
     {
-    //-----туловище
-    txSetColor (RGB(123, 232, 226), widthLine);
+    //----- туловище
+    txSetColor (RGB(5, 29, 28), widthLine);
+    txSetFillColor (RGB (255, 128, 0));
     txRectangle (x - 25*size, y, x + 25*size, y + 60*size);
-    //---голова
+    //--- голова
     txSetFillColor (RGB(255, 231, 213));
     txCircle (x, y - 15*size, 15*size);
-    //---глаза
+    //--- глаза
     txSetPixel (x - 5*size, y - 20*size, RGB (255, 128, 0));
     txSetPixel (x + 5*size, y - 20*size, RGB (255, 128, 0));
-    //---рот
+    //--- рот
     POINT mouth [4]{{x - 5*size, y - 10 - Mouth*size},
                     {x - 2*size, y - 10*size},
                     {x + 2*size, y - 10*size},
