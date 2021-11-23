@@ -52,8 +52,8 @@ void Man (int x, int y, int size, int widthLine, int rHand, int CHat1, int CHat2
     txSetFillColor (RGB(255, 231, 213));
     txCircle (x, y - 15*size, 15*size);
     //--- глаза
-    txSetPixel (x - 5*size, y - 20*size, RGB (255, 128, 0));
-    txSetPixel (x + 5*size, y - 20*size, RGB (255, 128, 0));
+    txCircle (x - 5.5*size, y - 18*size, 2*size);
+    txCircle (x + 5.5*size, y - 18*size, 2*size);
     //--- рот
     POINT mouth [4]{{x - 5*size, y - 10 - Mouth*size},
                     {x - 2*size, y - 10*size},
