@@ -16,24 +16,36 @@ int main ()
     double size = 6;
     double rHand = -100;
     double Mouth = 0;
-    for(int z = 0; z <= 20; z++)
+    int CHat1 = 100;
+    int CHat2 = 20;
+    int CHat3 = 26;
+    for(int z = 0; z <= 23; z++)
        {
-        Man (x, 500, size, 3, rHand, 166, 172, 138, Mouth);
-        x = x + 5*z;
+        Man (x, 500, size, 3, rHand, CHat1, CHat2, CHat3, Mouth);
         if (z <= 7)
            {
            for(int a = 1; a <= 20; a++)
               {
-              Man (x, 500, size, 3, rHand, 166, 172, 138, Mouth);
               Mouth = Mouth + 1.5*a;
               break;
               }
            }
-        for(int rast = 0.5; rast <= 4; rast++)
-           {
-           rHand = rHand + 0.58*rast;
-           }
-        txSleep(80);
+           for(long rast = 1; rast <= 4; rast++)
+              {
+              rHand = rHand + 0.58*rast;
+              }
+            x = x + 5*z;
+            for(int n = 1; n <= 100; n++)
+              {
+              CHat1 = CHat1 + 1*n;
+              CHat2 = CHat2 + 2*n;
+              CHat3 = CHat3 + 1*n;
+              }
+            for(int b = 1; b <= 5; b++)
+              {
+              size = size - 0.01*b;
+              }
+        txSleep(150);
         txSetFillColor (TX_WHITE);
         txClear();
         }
@@ -96,4 +108,3 @@ void Man (int x, int y, double size, int widthLine, double rHand, int CHat1, int
                    {x - 15*size, y - 30*size}, {x,           y - 50*size}};
     txPolygon(hat, 4);
     }
-
