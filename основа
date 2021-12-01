@@ -1,6 +1,6 @@
 # include "TXLib.h"
 
-void Man (int x, int y, double size, int widthLine, int rHand, int CHat1, int CHat2, int CHat3, int Mouth);
+void Man (int x, int y, double size, int widthLine, double rHand, int CHat1, int CHat2, int CHat3, double Mouth);
 
 int main ()
     {
@@ -14,16 +14,26 @@ int main ()
     */
     int x = 300;
     double size = 6;
-    int rHand = -100;
-    for(double z = 0; z <= 20; z++)
-        {
-        Man (x, 500, size, 3, rHand, 166, 172, 138, 3);
+    double rHand = -100;
+    double Mouth = 0;
+    for(int z = 0; z <= 20; z++)
+       {
+        Man (x, 500, size, 3, rHand, 166, 172, 138, Mouth);
         x = x + 5*z;
+        if (z <= 7)
+           {
+           for(int a = 1; a <= 20; a++)
+              {
+              Man (x, 500, size, 3, rHand, 166, 172, 138, Mouth);
+              Mouth = Mouth + 1.5*a;
+              break;
+              }
+           }
         for(int rast = 0.5; rast <= 4; rast++)
-        {
-         rHand = rHand + rast;
-        }
-        txSleep(150);
+           {
+           rHand = rHand + 0.58*rast;
+           }
+        txSleep(80);
         txSetFillColor (TX_WHITE);
         txClear();
         }
@@ -48,7 +58,7 @@ int main ()
 //!@endcode
 //}------------------------------------------------------
 
-void Man (int x, int y, double size, int widthLine, int rHand, int CHat1, int CHat2, int CHat3, int Mouth)
+void Man (int x, int y, double size, int widthLine, double rHand, int CHat1, int CHat2, int CHat3, double Mouth)
     {
     //----- туловище
     txSetColor (RGB(5, 29, 28), widthLine);
@@ -86,3 +96,4 @@ void Man (int x, int y, double size, int widthLine, int rHand, int CHat1, int CH
                    {x - 15*size, y - 30*size}, {x,           y - 50*size}};
     txPolygon(hat, 4);
     }
+
