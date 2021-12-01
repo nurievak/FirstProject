@@ -15,11 +15,11 @@ int main ()
     int x = 300;
     double size = 6;
     int rHand = -100;
-    for(double z = 0; z<=20; z++)
+    for(double z = 0; z <= 20; z++)
         {
         Man (x, 500, size, 3, rHand, 166, 172, 138, 3);
         x = x + 5*z;
-        for(int rast = 0.5; rast<=4; rast++)
+        for(int rast = 0.5; rast <= 4; rast++)
         {
          rHand = rHand + rast;
         }
