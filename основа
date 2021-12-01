@@ -1,6 +1,6 @@
 # include "TXLib.h"
 
-void Man (int x, int y, int size, int widthLine, int rHand, int CHat1, int CHat2, int CHat3, int Mouth);
+void Man (int x, int y, double size, int widthLine, int rHand, int CHat1, int CHat2, int CHat3, int Mouth);
 
 int main ()
     {
@@ -13,11 +13,17 @@ int main ()
     Man (600, 200, 2, 3,  47, 166, 172, 138, 3);
     */
     int x = 300;
-    for(int z = 0; z<=20; z++)
+    double size = 6;
+    int rHand = -100;
+    for(double z = 0; z<=20; z++)
         {
-        Man (x, 500, 2, 3,  47, 166, 172, 138, 3);
-        x = x + 10*z;
-        txSleep(260);
+        Man (x, 500, size, 3, rHand, 166, 172, 138, 3);
+        x = x + 5*z;
+        for(int rast = 0.5; rast<=4; rast++)
+        {
+         rHand = rHand + rast;
+        }
+        txSleep(150);
         txSetFillColor (TX_WHITE);
         txClear();
         }
@@ -42,7 +48,7 @@ int main ()
 //!@endcode
 //}------------------------------------------------------
 
-void Man (int x, int y, int size, int widthLine, int rHand, int CHat1, int CHat2, int CHat3, int Mouth)
+void Man (int x, int y, double size, int widthLine, int rHand, int CHat1, int CHat2, int CHat3, int Mouth)
     {
     //----- туловище
     txSetColor (RGB(5, 29, 28), widthLine);
